@@ -1,0 +1,52 @@
+{% include "header.html" %} <!-- Including header.html template -->
+
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('https://images.unsplash.com/photo-1470092306007-055b6797ca72?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <!-- Display the title of the blog -->
+                    <h1>Ruth's Blog</h1>
+                    <!-- Display the subtitle of the blog -->
+                    <span class="subheading">A Blog by Ruth</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+
+            <!-- Post previews -->
+            {% for post in all_posts %}
+            <div class="post-preview">
+                <a href="{{ url_for('show_post', index=post.id) }}">
+                    <!-- Display the title of the post -->
+                    <h2 class="post-title">{{ post.title }}</h2>
+                    <!-- Display the subtitle of the post -->
+                    <h3 class="post-subtitle">{{ post.subtitle }}</h3>
+                </a>
+                <!-- Display the author and date of the post -->
+                <p class="post-meta">
+                    Posted by
+                    <a href="#!">{{ post.author }}</a>
+                    on {{ post.date }}
+                </p>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+            {% endfor %}
+
+            <!-- Pager-->
+            <div class="d-flex justify-content-end mb-4">
+                <a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include "footer.html" %} <!-- Including footer.html template -->
